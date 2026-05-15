@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HKEX Disclosure of Interest Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>HKEX — Disclosure of Interest Tracker</h1>
+    <div class="sub">Substantial shareholders &amp; directors | Updated daily via GitHub Actions</div>
+  </div>
+</header>
+
+<!-- controls -->
+<div class="controls">
+  <label for="search">Search</label>
+  <input id="search" type="text" placeholder="Stock code, company, person…" style="width:220px" />
+
+  <label for="filter-type">Type</label>
+  <select id="filter-type">
+    <option value="">All</option>
+    <option value="buy">Acquisitions only</option>
+    <option value="sell">Disposals only</option>
+  </select>
+
+  <label for="filter-date">Date</label>
+  <input id="filter-date" type="date" />
+
+  <div class="spacer"></div>
+  <span id="last-updated" style="font-size:12px;color:var(--muted)"></span>
+</div>
+
+<!-- stats -->
+<div class="stats-bar">
+  <span>Showing <b id="stat-total">—</b> filings</span>
+  <span>Acquisitions: <b id="stat-buys" style="color:var(--green)">—</b></span>
+  <span>Disposals: <b id="stat-sells" style="color:var(--red)">—</b></span>
+</div>
+
+<!-- table -->
+<div class="table-wrap">
+  <table class="filings">
+    <thead>
+      <tr>
+        <th data-col="serial">Serial&nbsp;#</th>
+        <th data-col="filing_date">Filed</th>
+        <th data-col="event_date">Event Date</th>
+        <th data-col="stock_code">Ticker</th>
+        <th data-col="company_name">Company</th>
+        <th data-col="person_entity">Person / Entity</th>
+        <th data-col="capacity">Capacity</th>
+        <th data-col="shares_held_after" style="text-align:right">Shares Held</th>
+        <th data-col="share_change_from_previous" style="text-align:right">Change (#)</th>
+        <th data-col="pct_change_from_previous" style="text-align:right">Change (%)</th>
+        <th data-col="nature_of_interest">Nature / Relationship</th>
+        <th>Report</th>
+      </tr>
+    </thead>
+    <tbody id="tbl-body">
+      <!-- rows injected by app.js -->
+    </tbody>
+  </table>
+</div>
+
+<!-- pagination -->
+<div id="pagination" class="pagination"></div>
+
+<footer>
+  Data sourced from <a href="https://di.hkex.com.hk/" target="_blank" rel="noopener">HKEX Disclosure of Interests</a>.
+  For informational purposes only — not investment advice.
+  &nbsp;|&nbsp;
+  <span id="last-updated-footer"></span>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
